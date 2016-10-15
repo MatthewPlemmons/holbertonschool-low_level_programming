@@ -12,8 +12,9 @@ int main(void)
                         putchar(44); /* 44 is the decimal value representing a comma in ascii */
  	                putchar(32); /* 32 is the decimal value for a SPACE */
 	        }
-	c++;
+		c++;
         }
         putchar('\n');
         return 0;
+
 }
