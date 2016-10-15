@@ -2,19 +2,18 @@
 
 int main(void)
 {
-    char c;
+        char c = '0';
 
-    c = '0';
-    while (c <= '9')
-    {
-        putchar(c);
-	if (c < '9')
+	while (c <= '9')
 	{
-            putchar(44); /* 44 is the decimal value representing a comma in ascii */
- 	    putchar(32); /* 32 is the decimal value for a SPACE */
-	}
+	        putchar(c);
+	        if (c < '9')
+	        {
+                        putchar(44); /* 44 is the decimal value representing a comma in ascii */
+ 	                putchar(32); /* 32 is the decimal value for a SPACE */
+	        }
 	c++;
-    }
-    putchar('\n');
-    return 0;
+        }
+        putchar('\n');
+        return 0;
 }
