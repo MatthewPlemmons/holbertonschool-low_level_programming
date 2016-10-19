@@ -11,11 +11,11 @@ int _islower(int c)
 	unsigned char lower_case_a = 'a';
 	unsigned char lower_case_z = 'z';
 
-	if ((c < 0) || (c > 255))
+	if (c < 0 || c > 255)
 	{
 		return (0);
 	}
-	else if ((c >= lower_case_a) && (c <= lower_case_z))
+	else if (c >= lower_case_a && c <= lower_case_z)
 	{
 		return (1);
 	}
