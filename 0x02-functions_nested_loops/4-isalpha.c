@@ -6,7 +6,7 @@
  * Return: 1, if alphabetic.
  *         0, otherwise.
  */
-int _islower(int c)
+int _isalpha(int c)
 {
 
 	if ((c >= 'A') && (c <= 'Z'))
