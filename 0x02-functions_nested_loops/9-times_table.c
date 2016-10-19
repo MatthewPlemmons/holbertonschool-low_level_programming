@@ -1,9 +1,9 @@
 #include "holberton.h"
 
 /**
+ * times_table - print times table.
  *
- *
- *
+ * Return: void
  */
 void times_table(void)
 {
@@ -16,9 +16,32 @@ void times_table(void)
 		while (column < 10)
 		{
 			r = line * column;
-		        _putchar();
-			column++
+
+			if (column != 0)
+			{
+				_putchar(' ');
+			}
+			if (r < 10)
+			{
+				if (column != 0)
+				{
+					_putchar(' ');
+				}
+				_putchar(r + '0');
+			}
+			else
+			{
+				_putchar((r / 10) + '0');
+				_putchar((r % 10) + '0');
+			}
+			if (column != 9)
+			{
+				_putchar(',');
+			}
+			column++;
+
 		}
-		line++
+		_putchar('\n');
+		line++;
 	}
 }
