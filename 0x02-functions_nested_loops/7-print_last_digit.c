@@ -14,3 +14,19 @@ int print_last_digit(int n)
 	_putchar(remainder + '0');
 	return (remainder);
 }
+
+/**
+ * _abs - prints absolute value of an integer.
+ * @n: the integer to get absolute value of.
+ * Return: the absolute value of int n.
+ */
+int _abs(int n)
+{
+	if (n < 0)
+	{
+		n = n * -1;
+		return (n);
+	}
+	else
+		return (n);
+}
