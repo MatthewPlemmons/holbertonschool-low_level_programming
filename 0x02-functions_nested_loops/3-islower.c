@@ -6,7 +6,6 @@
  * Return: 1, if lower-case.
  *         0, otherwise.
  */
-
 int _islower(int c)
 {
 	unsigned char lower_case_a = 'a';
