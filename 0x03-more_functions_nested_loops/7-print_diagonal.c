@@ -2,7 +2,7 @@
 
 /**
  * print_diagonal - prints an diagonal line.
- * @n: the number of lines to print.
+ * @n: the number of '\' characters to print.
  *
  * Return: void
  */
@@ -13,14 +13,16 @@ void print_diagonal(int n)
 		int i = n;
 		while (n > 0)
 		{
-			while (((n - i) + 1) < n)
+			i = (i - n) + 1;
+			while (i < n)
 			{
 				_putchar(' ');
-				i--;
+				i++;
 			}
+			_putchar('\\');
+			_putchar('\n');
 			n--;
 		}
-		_putchar('\n');
 	}
 	else
 		_putchar('\n');
