@@ -28,7 +28,6 @@ void print_number(int n)
 			k = k / 10;
 			i++;
 		}
-
 		while (i > 0)
 		{
 			_putchar(a[i - 1] + '0');
