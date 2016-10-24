@@ -1,7 +1,5 @@
 #include "holberton.h"
 
-int number_of_digits(int n);
-
 /**
  * print_number - prints a given integer using only _putchar
  * @n: integer to be printed
@@ -13,36 +11,28 @@ void print_number(int n)
 
 	if (n != 0)
 	{
-		int digits = number_of_digits(n);
-		int arr[8];
-		int i = 0;
-		int num = n;
+		int i, k;
+		int a[8];
 
-		while (digits > i)
+		k = n;
+		if (n < 0)
 		{
-			arr[i] = num % 10;
-			num = num / 10;
+			k = k * -1;
+			_putchar('-');
+		}
 
-			if (arr[i] < 0)
-			{
-				arr[i] = arr[i] * -1;
-
-				if (i == digits - 1)
-				{
-					arr[i + 1] = '-';
-				}
-			}
+		i = 0;
+		while (k > 0)
+		{
+			a[i] = k % 10;
+			k = k / 10;
 			i++;
 		}
 
-		while (digits > 0)
+		while (i > 0)
 		{
-			if (arr[digits] == '-')
-			{
-				_putchar(arr[i]);
-			}
-			_putchar(arr[digits - 1] + '0');
-			digits--;
+			_putchar(a[i - 1] + '0');
+			i--;
 		}
 		_putchar('\n');
 	}
@@ -51,26 +41,4 @@ void print_number(int n)
 		_putchar('0');
 		_putchar('\n');
 	}
-}
-
-/**
- * number_of_digits - finds how many digits in a given integer.
- * @n: integer to retrieve digits of.
- *
- * Return: int representing how many digits long n is.
- */
-int number_of_digits(int n)
-{
-	int digits = 0;
-
-	if (n < 0)
-	{
-		n = n * -1;
-	}
-	while (n > 0)
-	{
-		n = n / 10;
-		digits++;
-	}
-	return (digits);
 }
