@@ -1,30 +1,40 @@
-#include <stdio.h>
+#include "holberton.h"
 
 int get_digits(int n);
 
 void print_number(int n)
 {
-	int digits = get_digits(n);
-	/*printf("%i is %i digits long.\n", n, digits);*/
 
-	int arr[8];
-	int i = 0;
-	int num = n;
-
-	while (digits > i)
+	if (n != 0)
 	{
-		arr[i] = num % 10;
-	        num = num / 10;
-		i++;
-	}
+		int digits = get_digits(n);
+		int arr[8];
+		int i = 0;
+		int num = n;
 
-	while (digits > 0)
+		while (digits > i)
+		{
+			arr[i] = num % 10;
+			num = num / 10;
+
+			if (arr[i] < 0 && i != digits - 1)
+			{
+				arr[i] = arr[i] * -1;
+			}
+			i++;
+		}
+
+		while (digits > 0)
+		{
+			_putchar(arr[digits - 1] + '0');
+			digits--;
+		}
+		_putchar('\n');
+	}
+	else
 	{
-		printf("%i", arr[digits - 1]);
-		digits--;
+		_putchar('0' + '\n');
 	}
-	printf("\n");
-
 }
 
 int get_digits(int n)
@@ -42,17 +52,3 @@ int get_digits(int n)
 	}
 	return (digits);
 }
-
-/*
-int get_numbers(int digit, int num)
-{
-	int arr[digit] = num;
-
-	while (digit > 0)
-	{
-		arr[n-1] = num % 10;
-		num = num / 10;
-		digit--;
-	}
-}
-*/
