@@ -17,15 +17,24 @@ void print_number(int n)
 			arr[i] = num % 10;
 			num = num / 10;
 
-			if (arr[i] < 0 && i != digits - 1)
+			if (arr[i] < 0)
 			{
 				arr[i] = arr[i] * -1;
+
+				if (i == digits - 1)
+				{
+					arr[i + 1] = '-';
+				}
 			}
 			i++;
 		}
 
 		while (digits > 0)
 		{
+			if (arr[digits] == '-')
+			{
+				_putchar(arr[i]);
+			}
 			_putchar(arr[digits - 1] + '0');
 			digits--;
 		}
@@ -33,7 +42,8 @@ void print_number(int n)
 	}
 	else
 	{
-		_putchar('0' + '\n');
+		_putchar('0');
+		_putchar('\n');
 	}
 }
 
