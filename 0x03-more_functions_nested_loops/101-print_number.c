@@ -1,13 +1,19 @@
 #include "holberton.h"
 
-int get_digits(int n);
+int number_of_digits(int n);
 
+/**
+ * print_number - prints a given integer using only _putchar
+ * @n: integer to be printed
+ *
+ * Return: void
+ */
 void print_number(int n)
 {
 
 	if (n != 0)
 	{
-		int digits = get_digits(n);
+		int digits = number_of_digits(n);
 		int arr[8];
 		int i = 0;
 		int num = n;
@@ -47,7 +53,13 @@ void print_number(int n)
 	}
 }
 
-int get_digits(int n)
+/**
+ * number_of_digits - finds how many digits in a given integer.
+ * @n: integer to retrieve digits of.
+ *
+ * Return: int representing how many digits long n is.
+ */
+int number_of_digits(int n)
 {
 	int digits = 0;
 
