@@ -1,7 +1,7 @@
 #include "holberton.h"
 
 /**
- * puts2 - prints every other char.
+ * puts2 - outputs every other char.
  * @str: string input.
  * Return: void
  */
