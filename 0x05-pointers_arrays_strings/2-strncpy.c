@@ -22,8 +22,8 @@ char *_strncpy(char *dest, char *src, int n)
 	}
 	while (i < n)
 	{
-		dest++;
 		*dest = '\0';
+		dest++;
 		i++;
 	}
 	return (s);
