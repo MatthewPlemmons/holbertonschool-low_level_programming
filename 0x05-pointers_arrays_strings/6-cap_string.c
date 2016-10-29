@@ -10,15 +10,14 @@ char *cap_string(char *s)
 {
 	int i;
 	char *c = s;
-	char sep[13] = {' ', '\t', '\n', ',', ';', '.', '!',
-			'?', '"', '(', ')', '{', '}'};
+	char sep[] = " \t\n,;.!?\"(){}";
 
 	while (*s != '\0')
 	{
 		if (*s >= 'a' && *s <= 'z')
 		{
 			i = 0;
-			while (i < 13)
+			while (sep[i] != '\0')
 			{
 				if (*(s - 1) == sep[i])
 				{
