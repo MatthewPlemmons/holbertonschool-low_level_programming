@@ -12,6 +12,11 @@ char *cap_string(char *s)
 	char *c = s;
 	char sep[] = " \t\n,;.!?\"(){}";
 
+	if (*s >= 'a' && *s <= 'z')
+	{
+		*s -= ('a' - 'A');
+	}
+
 	while (*s != '\0')
 	{
 		if (*s >= 'a' && *s <= 'z')
