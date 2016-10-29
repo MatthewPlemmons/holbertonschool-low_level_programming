@@ -9,8 +9,9 @@
 
 int _strcmp(char *s1, char *s2)
 {
-	int cmp;
-
-	cmp = *s1 - *s2;
-	return (cmp);
+	if (*s1 != *s2)
+	{
+		return (*s1 - *s2);
+	}
+	return (0);
 }
