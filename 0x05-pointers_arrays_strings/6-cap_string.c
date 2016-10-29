@@ -21,7 +21,7 @@ char *cap_string(char *s)
 			{
 				if (*(s - 1) == sep[i])
 				{
-					*s = *s - ('a' - 'A');
+					*s -= ('a' - 'A');
 					break;
 				}
 			}
