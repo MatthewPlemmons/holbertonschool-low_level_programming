@@ -17,13 +17,15 @@ char *cap_string(char *s)
 	{
 		if (*s >= 'a' && *s <= 'z')
 		{
-			for (i = 0; i < 13; i++)
+			i = 0;
+			while (i < 13)
 			{
 				if (*(s - 1) == sep[i])
 				{
 					*s -= ('a' - 'A');
 					break;
 				}
+				i++;
 			}
 		}
 		s++;
