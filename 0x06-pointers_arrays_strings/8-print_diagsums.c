@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "holberton.h"
 
 /**
  * print_diagsums - prints sum of two diagnoals in a square matrix of integers.
