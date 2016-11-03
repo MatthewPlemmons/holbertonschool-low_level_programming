@@ -10,14 +10,13 @@
 
 int check_prime(int n, int prm)
 {
-	if (prm % n == 0 || prm <= 1)
-		return (0);
-	else if (n >= prm - 1)
+	if (n == prm)
 		return (1);
+	else if (prm % n == 0 || prm <= 1)
+		return (0);
 	else
 		return (check_prime(n + 1, prm));
 }
-
 
 /**
  * is_prime_number - checks if n is prime.
