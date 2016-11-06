@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 /**
- * main -
- * @argc:
- * @argv:
+ * main - prints all arguments passed into program.
+ * @argc: argument counter.
+ * @argv: argument vector.
  * Return: int
  */
 
