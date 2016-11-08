@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "holberton.h"
+#include <stdlib.h>
 
 /**
  * main - multiply two numbers together.
@@ -15,8 +15,8 @@ int main(int argc, char *argv[])
 		int a;
 		int b;
 
-		a = _atoi(argv[1]);
-		b = _atoi(argv[2]);
+		a = atoi(argv[1]);
+		b = atoi(argv[2]);
 		printf("%d\n", a * b);
 		return (0);
 	}
