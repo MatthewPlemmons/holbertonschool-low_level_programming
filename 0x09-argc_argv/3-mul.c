@@ -3,8 +3,9 @@
 
 /**
  * main - multiply two numbers together.
- *
- *
+ * @argc: argument count.
+ * @argv: argument vector.
+ * Return: int, product of input numbers.
  */
 
 int main(int argc, char *argv[])
