@@ -3,9 +3,10 @@
 #include "holberton.h"
 
 /**
- *
- *
- *
+ * create_array - creates an array of chars.
+ * @size: size of array.
+ * @c: char to initialize to array.
+ * Return: char
  */
 
 char *create_array(unsigned int size, char c)
