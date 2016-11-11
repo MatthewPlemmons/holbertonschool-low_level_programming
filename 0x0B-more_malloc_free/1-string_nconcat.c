@@ -42,7 +42,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	}
 
 	i = 0;
-	while (s2[i] && i <= n)
+	while (s2[i] && i < n)
 	{
 		a[len1 + i] = s2[i];
 		i++;
