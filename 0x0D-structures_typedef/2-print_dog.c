@@ -2,9 +2,9 @@
 #include "dog.h"
 
 /**
- *
- *
- *
+ * print_dog - print dog info.
+ * @d: structure.
+ * Return: void
  */
 
 void print_dog(struct dog *d)
