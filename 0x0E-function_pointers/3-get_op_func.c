@@ -10,15 +10,20 @@
 
 int (*get_op_func(char *s))(int, int)
 {
-	int (*opr)(int, int);
+	op_t ops[] = {
+		{"+", op_add},
+		{"-", op_sub},
+		{"*", op_mul},
+		{"/", op_div},
+		{"%", op_mod},
+		{NULL, NULL}
+	};
+	int i;
 
-	opr = (*s == '+' ? &op_add :
-	       *s == '-' ? &op_sub :
-	       *s == '*' ? &op_mul :
-	       *s == '/' ? &op_div :
-	       *s == '%' ? &op_mod : NULL);
-
-	if (opr == NULL)
-		return (NULL);
-	return (opr);
+	for (i = 0; i < 5; i++)
+	{
+		if (*(ops[i]).op == *s)
+			return (ops[i].f);
+	}
+	return (NULL);
 }
