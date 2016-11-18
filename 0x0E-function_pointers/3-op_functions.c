@@ -4,7 +4,7 @@
  * op_add - adds integers.
  * @a: first integer.
  * @b: second integer.
- * Result: int, sum.
+ * Return: int, sum.
  */
 
 int op_add(int a, int b)
@@ -16,7 +16,7 @@ int op_add(int a, int b)
  * op_sub - subtracts integers.
  * @a: first integer.
  * @b: second integer.
- * Result: int, difference.
+ * Return: int, difference.
  */
 
 int op_sub(int a, int b)
