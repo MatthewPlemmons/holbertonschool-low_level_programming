@@ -1,40 +1,83 @@
 #include <stdarg.h>
 #include <stdio.h>
+#include "variadic_functions.h"
+
+/*#define CSPEC(token) ("%"#token)
+ */
 
 /**
  *
  *
- *
- *
+ */
+
+void _print_c(va_list a)
+{
+	printf("%c", va_arg(a, int));
+}
+
+void _print_i(va_list a)
+{
+	printf("%i", va_arg(a, int));
+}
+
+void _print_f(va_list a)
+{
+	printf("%f", va_arg(a, double));
+}
+
+void _print_s(va_list a)
+{
+	char *str;
+
+	str = va_arg(a, char *);
+	if (str == NULL)
+		str = "(nil)";
+	printf("%s", str);
+}
+
+
+
+/**
+ * print_all - prints anything.
+ * @format: list of types of args.
+ * Return: void
  */
 
 void print_all(const char * const format, ...)
 {
-	va_list pa;
-	char *tmp;
-	int i, args;
+	typedef struct Dtypes
+	{
+		char cs;
+		char (*f)(va_list a);
+	}dtypes_t;
 
-	i = args = 0;
+	va_list ap;
+	int i, j;
+
+	dtypes_t dtypes[] = {
+		{'c', _print_c},
+		{'i', _print_i},
+		{'f', _print_f},
+		{'s', _print_s},
+	};
+
+	va_start(ap, format);
+	i = 0;
 	while (format[i])
 	{
-		if (format[i] == 'c' ||
-		    format[i] == 'i' ||
-		    format[i] == 'f' ||
-		    format[i] == 's')
+		j = 0;
+		while (j <= 4)
 		{
-			tmp += format[i]
-			args++;
+			if (dtypes[j].cs == format[i])
+			{
+				dtypes[j].f(ap);
+				/*arg = va_arg(ap, dtypes[j].dtype);
+				  printf(CSPEC(format[i]), arg); */
+			}
+			j++;
 		}
 		i++;
 	}
-
-	i = 0;
-	va_start(pa, format);
-	while (i < args)
-	{
-		va_arg(pa, tmp[i]);
-		i++;
-	}
-	va_end(pa);
+	va_end(ap);
 	printf("\n");
 }
