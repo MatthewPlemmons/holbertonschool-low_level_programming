@@ -11,12 +11,11 @@ void print_binary(unsigned long int n)
 {
 	int i;
 
-	for (i = (sizeof(long)*4) - 1; i - 1 >= 0; i--)
+	for (i = (sizeof(long) * 4) - 1; i - 1 >= 0; i--)
 	{
-		if (n&(1 << i))
+		if (n & (1 << i))
 			break;
 	}
 	for (; i >= 0; i--)
-		(n&(1 << i)) ? _putchar('1'): _putchar('0');
-	printf("\n");
+		(n & (1 << i)) ? _putchar('1') : _putchar('0');
 }
