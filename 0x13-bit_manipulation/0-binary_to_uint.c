@@ -18,7 +18,10 @@ unsigned int binary_to_uint(const char *b)
 		if (*b == '1')
 			total += 1;
 		else if (*b == '0')
+		{
+			b++;
 			continue;
+		}
 		else
 			return (0);
 		b++;
