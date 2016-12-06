@@ -14,7 +14,7 @@ unsigned int flip_bits(unsigned long int n, unsigned long int m)
 
 	flips = 0;
 	c = n ^ m;
-	for (i = (sizeof(long)*4) - 1; i >= 0; i--)
+	for (i = (sizeof(long) * 4) - 1; i >= 0; i--)
 	{
 		if (c & (1 << i))
 			flips++;
