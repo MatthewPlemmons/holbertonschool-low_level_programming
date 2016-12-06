@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "holberton.h"
 
 /**
@@ -10,7 +11,7 @@
 
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	if (*n == NULL)
+	if (n == NULL)
 		return (-1);
 	*n &= ~(1 << index);
 	if (!(*n & (1 << index)))
