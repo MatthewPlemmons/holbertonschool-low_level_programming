@@ -15,12 +15,13 @@ unsigned int binary_to_uint(const char *b)
 	while (*b)
 	{
 		total <<= 1;
-		if (*b++ == '1')
+		if (*b == '1')
 			total += 1;
 		else if (*b == '0')
 			continue;
 		else
 			return (0);
+		b++;
 	}
 	return (total);
 
