@@ -48,6 +48,7 @@ void copy_file(int file_from, int file_to, const char *f1, const char *f2)
 int cp(const char *file1, const char *file2)
 {
 	int file_from, file_to;
+	mode_t permissions = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
 
 	file_from = open(file1, O_RDONLY);
 	if (file_from == -1)
@@ -57,7 +58,7 @@ int cp(const char *file1, const char *file2)
 		exit(98);
 	}
 
-	file_to = open(file2, O_CREAT | O_TRUNC | O_WRONLY, 00664);
+	file_to = open(file2, O_CREAT | O_TRUNC | O_WRONLY, permissions);
 	if (file_to == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file2);
