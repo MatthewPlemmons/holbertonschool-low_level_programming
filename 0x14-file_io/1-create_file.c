@@ -25,7 +25,7 @@ int create_file(const char *filename, char *test_content)
 	if (test_content == NULL)
 	{
 		close(fd);
-		return (-1);
+		return (1);
 	}
 
 	i = 0;
