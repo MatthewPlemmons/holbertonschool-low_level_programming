@@ -20,14 +20,17 @@ int append_text_to_file(const char *filename, char *test_content)
 
 	fd = open(filename, O_RDWR | O_APPEND);
 	if (fd == -1)
-	{
 		return (-1);
+
+	if (test_content == NULL)
+	{
+		close(fd);
+		return (1);
 	}
 	i = 0;
 	while (test_content[i])
 		i++;
-	if (test_content != NULL)
-		write(fd, test_content, i);
+	write(fd, test_content, i);
 	close(fd);
 	return (1);
 }
