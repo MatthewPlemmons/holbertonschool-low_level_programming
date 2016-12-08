@@ -4,6 +4,14 @@
 #include <fcntl.h>
 #include "holberton.h"
 
+/**
+ * copy_file - copies file contents to new file.
+ * @file_from: file to copy from.
+ * @file_to: file to copy to.
+ * @f1: filename string.
+ * @f2: filename string.
+ * Return: void
+ */
 
 void copy_file(int file_from, int file_to, const char *f1, const char *f2)
 {
@@ -29,6 +37,13 @@ void copy_file(int file_from, int file_to, const char *f1, const char *f2)
 	}
 }
 
+
+/**
+ * cp - opens and closes files to be copied.
+ * @file1: filename string.
+ * @file2: filename string.
+ * Return: int, 0 on success.
+ */
 
 int cp(const char *file1, const char *file2)
 {
@@ -62,7 +77,6 @@ int cp(const char *file1, const char *file2)
 	}
 	return (0);
 }
-
 
 
 /**
