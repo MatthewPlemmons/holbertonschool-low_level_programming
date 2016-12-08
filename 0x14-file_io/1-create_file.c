@@ -18,11 +18,14 @@ int create_file(const char *filename, char *test_content)
 	if (filename == NULL)
 		return (-1);
 
-	fd = open(filename, O_CREAT | O_RDWR, 00600);
+	fd = open(filename, O_CREAT | O_RDWR | O_TRUNC, 00600);
 	i = 0;
 	while (test_content[i])
 		i++;
-	write(fd, test_content, i);
+	if (test_content == NULL)
+		write(fd, NULL, 1);
+	else
+		write(fd, test_content, i);
 	close(fd);
 	return (1);
 }
