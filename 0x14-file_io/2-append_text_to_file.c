@@ -18,12 +18,14 @@ int append_text_to_file(const char *filename, char *test_content)
 	if (filename == NULL)
 		return (-1);
 
-	fd = open(filename, O_CREAT | O_RDWR | O_APPEND, 00600);
+	fd = open(filename, O_RDWR | O_APPEND, 00600);
+	if (fd == -1)
+		return (-1);
 	i = 0;
 	while (test_content[i])
 		i++;
 	if (test_content == NULL)
-		write(fd, test_content, 1);
+		return (1);
 	else
 		write(fd, test_content, i);
 	close(fd);
