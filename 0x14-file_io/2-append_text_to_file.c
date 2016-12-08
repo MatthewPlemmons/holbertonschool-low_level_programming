@@ -1,5 +1,6 @@
 #include <fcntl.h>
 #include <unistd.h>
+#include <errno.h>
 #include "holberton.h"
 
 /**
@@ -20,13 +21,15 @@ int append_text_to_file(const char *filename, char *test_content)
 
 	fd = open(filename, O_RDWR | O_APPEND, 00600);
 	if (fd == -1)
+	{
+		if (errno = EACCES)
+			return (-1);
 		return (-1);
+	}
 	i = 0;
 	while (test_content[i])
 		i++;
-	if (test_content == NULL)
-		return (1);
-	else
+	if (test_content)
 		write(fd, test_content, i);
 	close(fd);
 	return (1);
