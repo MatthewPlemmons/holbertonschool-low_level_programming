@@ -9,18 +9,14 @@
 
 void print_binary(unsigned long int n)
 {
-	int i, size, first1;
-
-	first1 = 0;
-	size = sizeof(unsigned long) * 4;
-	for (i = size - 1; i >= 0; i--)
+	if (n <= 1)
 	{
-		if (first1 == 1)
-			(n & (1 << i)) ? _putchar('1') : _putchar('0');
-		else if (n & (1 << i))
-		{
-			_putchar('1');
-			first1 = 1;
-		}
+		_putchar(n + '0');
+		return;
+	}
+	if (n != 0)
+	{
+		print_binary(n >> 1);
+		n & 1 ? _putchar('1') : _putchar('0');
 	}
 }
