@@ -19,7 +19,6 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 		printf("Error: malloc failed\n");
 		return (NULL);
 	}
-
 	new->n = n;
 	new->next = NULL;
 	if (!*head)
@@ -28,11 +27,9 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 		*head = new;
 		return (*head);
 	}
-
 	tmp = *head;
 	while (tmp->next)
 		tmp = tmp->next;
-
 	tmp->next = new;
 	new->prev = tmp;
 	return (new);
