@@ -1,13 +1,10 @@
-#include <stdlib.h>
-#include <stdio.h>
 #include "lists.h"
 
 /**
- * add_dnodeint_end - adds new node to end of list
- * @head: double pointer to head of list
- * @n: data to store in node
- * Return: address of the new node
- *         or NULL, if failed
+ * add_dnodeint_end - adds new node to end of list.
+ * @head: double pointer to head of list.
+ * @n: data to store in node.
+ * Return: address of the new node, or NULL if failed.
  */
 dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 {
@@ -21,12 +18,9 @@ dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
 	}
 	new->n = n;
 	new->next = NULL;
+	new->prev = NULL;
 	if (!*head)
-	{
-		new->prev = NULL;
-		*head = new;
-		return (*head);
-	}
+		return (*head = new);
 	tmp = *head;
 	while (tmp->next)
 		tmp = tmp->next;
