@@ -1,6 +1,6 @@
 CC=gcc
-SRC=$(wildcard *.c)
-OBJ=$(SRC:%.c=%.o)
+SRC=holberton.c main.c
+OBJ=holberton.o main.o
 NAME=holberton
 
 all: $(OBJ)
