@@ -3,7 +3,7 @@ SRC=holberton.c main.c
 OBJ=holberton.o main.o
 NAME=holberton
 
-all: $(OBJ)
+all: $(OBJ) m.h
 	$(CC) $(OBJ) -o $(NAME)
 
 %.o: %.c
