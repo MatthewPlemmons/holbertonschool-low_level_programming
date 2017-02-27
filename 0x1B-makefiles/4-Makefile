@@ -1,6 +1,6 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra -pedantic -g
-SRC=$(wildcard *.c)
+SRC=holberton.c main.c
 OBJ=$(SRC:%.c=%.o)
 NAME=holberton
 RM=-rm -f
