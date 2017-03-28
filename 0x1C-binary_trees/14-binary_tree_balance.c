@@ -1,5 +1,10 @@
 #include "binary_trees.h"
 
+/**
+ * b_tree_height - Calculate height of binary tree.
+ * @tree: Input tree.
+ * Return: Height of tree.
+ */
 int b_tree_height(const binary_tree_t *tree)
 {
 	int hleft, hright, height;
@@ -11,7 +16,6 @@ int b_tree_height(const binary_tree_t *tree)
 	height = hleft > hright ? hleft : hright;
 	return (height);
 }
-
 
 /**
  * binary_tree_balance - Measure balance factor of binary tree.
