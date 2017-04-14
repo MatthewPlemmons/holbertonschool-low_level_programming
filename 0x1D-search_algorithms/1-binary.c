@@ -13,7 +13,6 @@ void print_array(int *array, size_t start, size_t end)
 	while (start <= end)
 	{
 		printf("%d", array[start]);
-		/*(unsigned int) i, (int) array[i]);*/
 		if (start != end)
 			printf(", ");
 		++start;
@@ -44,15 +43,9 @@ int binary_search(int *array, size_t size, int value)
 		if (value == array[mid])
 			return (mid);
 		if (value > array[mid])
-		{
 			start = mid + 1;
-			continue;
-		}
-		if (value < array[mid])
-		{
+		else
 			end = mid;
-			continue;
-		}
 	}
 	return (-1);
 }
