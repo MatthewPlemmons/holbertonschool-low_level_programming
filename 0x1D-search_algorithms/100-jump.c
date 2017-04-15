@@ -40,7 +40,7 @@ int jump_search(int *array, size_t size, int value)
 {
 	size_t start, end, jump;
 
-	if (!array)
+	if (!array || size <= 0))
 		return (-1);
 	start = 0;
 	jump = sqrt(size - 1);
