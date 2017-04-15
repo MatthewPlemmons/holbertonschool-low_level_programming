@@ -13,6 +13,8 @@ int _linear_search(int *array, size_t size, size_t start, int value)
 {
 	size_t end;
 
+	if (!array)
+		return (-1);
 	end = sqrt(size - 1) + start;
 	printf("Value found between indexes [%u] and [%u]\n",
 	       (unsigned int) start, (unsigned int) end);
@@ -40,7 +42,7 @@ int jump_search(int *array, size_t size, int value)
 {
 	size_t start, end, jump;
 
-	if (!array || size <= 0))
+	if (!array)
 		return (-1);
 	start = 0;
 	jump = sqrt(size - 1);
