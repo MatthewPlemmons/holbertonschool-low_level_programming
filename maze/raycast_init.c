@@ -1,6 +1,11 @@
 #include "raycast.h"
 
-
+/**
+ * initialize_ray - Intialize ray structure.
+ * @p: player struct
+ * @cam: camera
+ * Return: Ray structure if successful, otherwise NULL
+ */
 Ray *initialize_ray(Player *p, float cam)
 {
 	Ray *ray;
@@ -17,7 +22,7 @@ Ray *initialize_ray(Player *p, float cam)
 	ray->grid_pos = (Vector) {floorf(ray->pos.x), floorf(ray->pos.y)};
 	ray->side_dist = (Vector) {0, 0};
 
-	ray->delta_dist = (Vector) { 
+	ray->delta_dist = (Vector) {
 		sqrt(1 + (ray->dir.y * ray->dir.y) / (ray->dir.x * ray->dir.x)),
 		sqrt(1 + (ray->dir.x * ray->dir.x) / (ray->dir.y * ray->dir.y))
 	};
@@ -29,7 +34,10 @@ Ray *initialize_ray(Player *p, float cam)
 	return (ray);
 }
 
-
+/**
+ * free_ray - Free ray struct memory.
+ * @ray: ray struct
+ */
 void free_ray(Ray *ray)
 {
 	if (!ray)

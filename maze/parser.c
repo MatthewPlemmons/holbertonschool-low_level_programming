@@ -1,7 +1,13 @@
 #include "maze.h"
 
-
-void init_map_array(FILE* fp, int h, int w, int map[][MAP_WIDTH])
+/**
+ * init_map_array - Initialize array of map data.
+ * @fp: file pointer
+ * @h: height of map
+ * @w: width of map
+ * @map: map array
+ */
+void init_map_array(FILE *fp, int h, int w, int map[][MAP_WIDTH])
 {
 	int i, j, c;
 
@@ -19,7 +25,12 @@ void init_map_array(FILE* fp, int h, int w, int map[][MAP_WIDTH])
 	}
 }
 
-
+/**
+ * print_map_array - Print map array to terminal.
+ * @h: height
+ * @w: width
+ * @map: map array
+ */
 void print_map_array(int h, int w, int map[][MAP_WIDTH])
 {
 	int i, j;
@@ -35,14 +46,14 @@ void print_map_array(int h, int w, int map[][MAP_WIDTH])
 
 /**
  * map_file_parser - Reads in a map file to render as the maze.
- *
- *
+ * @filepath: path of map file
+ * @map: map array
  */
 void map_file_parser(char *filepath, int map[][MAP_WIDTH])
 {
 	FILE *fp;
 
-	/* TODO: Scan file path to check for .txt extension */ 
+	/* TODO: Scan file path to check for .txt extension */
 	/* extensionCheck(file) */
 
 	fp = fopen(filepath, "r");

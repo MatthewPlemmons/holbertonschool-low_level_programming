@@ -1,12 +1,13 @@
 #include "maze.h"
+#include "controls.h"
 
 #define WIDTH 1024
 #define HEIGHT 768
 
 
 /**
- * init_instance - initialize a new SDL2 instance.
- *
+ * init_instance - Initialize a new SDL2 instance.
+ * Return: SDL_Instance structure if successful, otherwise NULL
  */
 SDL_Instance *init_instance(void)
 {
@@ -48,7 +49,12 @@ SDL_Instance *init_instance(void)
 	return (instance);
 }
 
-
+/**
+ * init_player - Initialize player struct.
+ * @x: x coordinate of player position
+ * @y: y coordinate of player position
+ * Return: Player structure if successful, NULL otherwise
+ */
 Player *init_player(double x, double y)
 {
 	Player *p;
@@ -66,12 +72,17 @@ Player *init_player(double x, double y)
 }
 
 
-
+/**
+ * main - Starting function for maze application.
+ * @argc: argument count
+ * @argv: argument vector
+ * Return: 0 if successful, a nonzero value otherwise
+ */
 int main(int argc, char *argv[])
 {
 	SDL_Instance *instance;
 	Player *player;
-	double current, previous, frame_time;
+	double curr_tick, prev_tick, frame_time;
 	int map[MAP_HEIGHT][MAP_WIDTH];
 
 	if (argc != 2)
@@ -86,10 +97,7 @@ int main(int argc, char *argv[])
 
 	/* (4, 3) is starting coordinates, define macro for this */
 	player = init_player(4, 3);
-
-	/* Store time of current and previous frame. */
-	current = 0;
-	previous = 0;
+	curr_tick = prev_tick = 0; /* Time of current and previous frame. */
 	while (1)
 	{
 		if (exit_check() == 1)
@@ -100,13 +108,11 @@ int main(int argc, char *argv[])
 
 		for (int x = 0; x < WIDTH; ++x)
 			ray_cast(map, instance, player, x);
-
 		SDL_RenderPresent(instance->renderer);
 
-		/* */
-		previous = current;
-		current = SDL_GetTicks();
-		frame_time = (current - previous) / 1000.0;
+		prev_tick = curr_tick;
+		curr_tick = SDL_GetTicks();
+		frame_time = (curr_tick - prev_tick) / 1000.0;
 		player->move_speed = frame_time * 5.0;
 		player->rot_speed = frame_time * 3.0;
 		check_move_keys(map, player);

@@ -1,8 +1,11 @@
 #include "controls.h"
 
 
-
-int exit_check()
+/**
+ * exit_check - check if program was closed
+ * Return: 1 if exit key detected, 0 otherwise.
+ */
+int exit_check(void)
 {
 	SDL_Event event;
 	SDL_KeyboardEvent key;
@@ -22,39 +25,57 @@ int exit_check()
 	return (0);
 }
 
-
-int move_player_forward(int map[][MAP_WIDTH], Player *p)
+/**
+ * move_player_forward - Moves player forward in the map.
+ * @map: map array
+ * @p: player struct
+ */
+void move_player_forward(int map[][MAP_WIDTH], Player *p)
 {
 	if (map[(int)(p->pos.x + p->dir.x * p->move_speed)][(int)p->pos.y] == 0)
 		p->pos.x += p->dir.x * p->move_speed;
 	if (map[(int)p->pos.x][(int)(p->pos.y + p->dir.y * p->move_speed)] == 0)
 		p->pos.y += p->dir.y * p->move_speed;
-	return (0);
 }
 
-int move_player_back(int map[][MAP_WIDTH], Player *p)
+/**
+ * move_player_back - Moves player backward in the map.
+ * @map: map array
+ * @p: player struct
+ */
+void move_player_back(int map[][MAP_WIDTH], Player *p)
 {
 	if (map[(int)(p->pos.x - p->dir.x * p->move_speed)][(int)p->pos.y] == 0)
 		p->pos.x -= p->dir.x * p->move_speed;
 	if (map[(int)p->pos.x][(int)(p->pos.y - p->dir.y * p->move_speed)] == 0)
 		p->pos.y -= p->dir.y * p->move_speed;
-	return (0);
 }
 
-int rotate_player(Player *p, float rot_speed)
+/**
+ * rotate_player - Rotates the player around.
+ * @p: player struct
+ * @rot_speed: rotation speed of player
+ */
+void rotate_player(Player *p, float rot_speed)
 {
 	/* both camera direction and camera plane must be rotated */
 	double oldDirX = p->dir.x;
+
 	p->dir.x = p->dir.x * cos(rot_speed) - p->dir.y * sin(rot_speed);
 	p->dir.y = oldDirX * sin(rot_speed) + p->dir.y * cos(rot_speed);
 
 	double oldPlaneX = p->plane.x;
+
 	p->plane.x = p->plane.x * cos(rot_speed) - p->plane.y * sin(rot_speed);
 	p->plane.y = oldPlaneX * sin(rot_speed) + p->plane.y * cos(rot_speed);
-	return (0);
 }
 
-int check_move_keys(int map[][MAP_WIDTH], Player *player)
+/**
+ * check_move_keys - Checks keyboard scancodes for the W,S,A and D keys.
+ * @map: map array
+ * @player: player struct
+ */
+void check_move_keys(int map[][MAP_WIDTH], Player *player)
 {
 	const Uint8 *keys = SDL_GetKeyboardState(NULL);
 
@@ -66,6 +87,5 @@ int check_move_keys(int map[][MAP_WIDTH], Player *player)
 		rotate_player(player, -(player->rot_speed));
 	if (keys[SDL_SCANCODE_D])
 		rotate_player(player, player->rot_speed);
-
-	return (0);
 }
+

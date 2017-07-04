@@ -1,9 +1,8 @@
 #include "raycast.h"
 
 /**
-* calculate_step - 
-*
-*
+* calculate_step - Calculate ray step.
+* @ray: ray to calculate step of
 */
 void calculate_step(Ray *ray)
 {
@@ -24,12 +23,17 @@ void calculate_step(Ray *ray)
 	}
 	else
 	{
- 		ray->step.y = 1;
+		ray->step.y = 1;
 		ray->side_dist.y = (ray->grid_pos.y + 1.0 - ray->pos.y) * ray->delta_dist.y;
 	}
 
 }
 
+/**
+ * digital_differential_analysis - Find what squares a ray hits on map grid.
+ * @ray: casted ray
+ * @map: map array
+ */
 void digital_differential_analysis(Ray *ray, int map[][MAP_WIDTH])
 {
 	while (ray->hit == 0)
@@ -47,20 +51,33 @@ void digital_differential_analysis(Ray *ray, int map[][MAP_WIDTH])
 			ray->side = 1;
 		}
 		/* Determine if the ray has hit a wall. */
-		if (map[(int)ray->grid_pos.x][(int)ray->grid_pos.y] > 0) 
+		if (map[(int)ray->grid_pos.x][(int)ray->grid_pos.y] > 0)
 			ray->hit = 1;
 	}
 
 }
 
+/**
+ * calculate_dist - Calculate distance of ray.
+ * @ray: casted ray
+ */
 void calculate_dist(Ray *ray)
 {
 	if (ray->side == 0)
-		ray->perp_wall_dist = fabs((ray->grid_pos.x - ray->pos.x + (1 - ray->step.x) / 2) / ray->dir.x);
+		ray->perp_wall_dist = fabs((ray->grid_pos.x - ray->pos.x +
+									(1 - ray->step.x) / 2) / ray->dir.x);
 	else
-		ray->perp_wall_dist = fabs((ray->grid_pos.y - ray->pos.y + (1 - ray->step.y) / 2) / ray->dir.y);
+		ray->perp_wall_dist = fabs((ray->grid_pos.y - ray->pos.y +
+									(1 - ray->step.y) / 2) / ray->dir.y);
 }
 
+/**
+ * ray_cast - Ray casting function.
+ * @map: map array
+ * @inst: current instance
+ * @p: current player
+ * @x: x coordinate
+ */
 void ray_cast(int map[][MAP_WIDTH], SDL_Instance *inst, Player *p, int x)
 {
 	Ray *ray;
@@ -92,7 +109,7 @@ void ray_cast(int map[][MAP_WIDTH], SDL_Instance *inst, Player *p, int x)
 	SDL_SetRenderDrawColor(inst->renderer, 0, 255, 0, 255);
 	if (ray->side == 1)
 		SDL_SetRenderDrawColor(inst->renderer, 0, 150, 0, 255);
-	
+
 	SDL_RenderDrawLine(inst->renderer, x, draw_start, x, draw_end);
 	free_ray(ray);
 }
