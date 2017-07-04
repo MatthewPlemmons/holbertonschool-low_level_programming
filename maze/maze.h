@@ -13,6 +13,13 @@
 #define MAP_HEIGHT 20
 
 
+/**
+ * struct SDL_Instance - Contains screen rendering data.
+ * @window: window to render to
+ * @renderer: renders graphics
+ * @height: height of screen
+ * @width: width of screen
+ */
 typedef struct SDL_Instance
 {
 	SDL_Window *window;
@@ -21,13 +28,25 @@ typedef struct SDL_Instance
 	int width;
 } SDL_Instance;
 
-
+/**
+ * struct vector_s - Contains vector data.
+ * @x: x coordinate
+ * @y: y coordinate
+ */
 typedef struct vector_s
 {
 	float x;
 	float y;
 } Vector;
 
+/**
+ * struct player_s - Struct for player data.
+ * @pos: player position
+ * @dir: player direction
+ * @plane: plane coordinates
+ * @move_speed: speed of player
+ * @rot_speed: rotations speed of player
+ */
 typedef struct player_s
 {
 	Vector pos;
@@ -36,14 +55,6 @@ typedef struct player_s
 	float move_speed;
 	float rot_speed;
 } Player;
-
-
-/* movement.c */
-int exit_check(void);
-int check_move_keys(int map[][MAP_WIDTH], Player *player);
-int move_player_forward(int map[][MAP_WIDTH], Player *p);
-int move_player_back(int map[][MAP_WIDTH], Player *p);
-int rotate_player(Player *p, float rotSpeed);
 
 /* main.c in place of init.c */
 SDL_Instance *init_instance(void);
