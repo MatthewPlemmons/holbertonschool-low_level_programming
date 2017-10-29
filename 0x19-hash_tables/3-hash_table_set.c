@@ -5,7 +5,7 @@
  * @ht: hash table to add to.
  * @key: key of new element.
  * @value: value of new element.
- * Return: 0 on success, 1 on failure.
+ * Return: 1 on success, 0 on failure.
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
@@ -18,13 +18,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	new = malloc(sizeof(hash_node_t));
 	if (!new)
 		return (0);
-	new->key = strdup(key);
-	new->value = strdup(value);
 
 	hash_value = key_index((const unsigned char *)key, ht->size);
-
-	if (ht->array[hash_value])
-		new->next = ht->array[hash_value];
+	new->key = strdup(key);
+	new->value = strdup(value);
+	new->next = ht->array[hash_value];
 	ht->array[hash_value] = new;
+
 	return (1);
 }
