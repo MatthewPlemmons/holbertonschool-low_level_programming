@@ -86,7 +86,10 @@ char *shash_table_get(const shash_table_t *ht, const char *key)
 	return (NULL);
 }
 
-
+/**
+ * shash_table_print - prints a hash table.
+ * @ht: hash table to print.
+ */
 void shash_table_print(const shash_table_t *ht)
 {
 	unsigned long int i;
@@ -109,6 +112,10 @@ void shash_table_print(const shash_table_t *ht)
 }
 
 
+/**
+ * shash_table_print_rev - prints a hash table.
+ * @ht: hash table to print.
+ */
 void shash_table_print_rev(const shash_table_t *ht)
 {
         unsigned long int i;
@@ -129,6 +136,11 @@ void shash_table_print_rev(const shash_table_t *ht)
         printf("}\n");
 }
 
+
+/**
+ * shash_table_delete - Function for deleting a hash table.
+ * @ht: hash table to be deleted
+ */
 void shash_table_delete(shash_table_t *ht)
 {
 	shash_node_t *curr, *temp;
