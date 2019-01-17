@@ -9,6 +9,9 @@ int binary_tree_is_bst(const binary_tree_t *tree)
 {
 	const binary_tree_t *prev;
 
+	if (!tree)
+		return (0);
+
 	prev = NULL;
 	return (is_bst(tree, prev));
 }
